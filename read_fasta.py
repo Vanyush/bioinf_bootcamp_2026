@@ -2,7 +2,7 @@ import pandas as pd
 import numpy
 
 
-def read_fasta_data(file: str):
+def read_fasta_data(file: str) -> pd.DataFrame:
     names = []
     seq = []
     year = []
