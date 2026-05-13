@@ -26,5 +26,3 @@ def read_fasta_data(file: str) -> pd.DataFrame:
     return df
 
 
-df = read_fasta_data('mth_crocuta_aln_renamed.snps.fasta')
-df.to_csv('fasta_to_df.csv', index=False)
