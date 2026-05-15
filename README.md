@@ -111,10 +111,14 @@ streamlit run MMNV_web.py
 В результате работы алгоритмов были получены [таблица](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/real_task/alg1.csv), содержащая столбцы позиция во входном файле (*index*), заголовок из входного файла (*header*), данный возраст последовательности (*observed_age_bp*), рассчитанный возраст последовательности (*inferred_age_bp*), достоверность вычисления возраста (*confidence*), длина последовательности (*sequence_length*), назначенная гаплогруппа (*haplogroup*), и [граф](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/real_task/alg1_network.png), на котором все определенные гаплогруппы расположены в порядке возрастания возраста последовательности, синие узлы обозначают гаплогруппы с известным возрастом, оранжевые - с неизвестным. а ребра соединяют генетически близкие гаплогруппы.
 
 ## Интерпретация полученных данных
+На основе полученных таблицы и графа, с использованием [скрипта оценки "родительских" отношений](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/map/parents_children.py), была построена карта миграций гиен, на которой линии - достоверные "родительские" связи между гаплогруппами, точки - гаплогруппы, для которых не удалось достоверно определить родителей:
+
+![рис. 1](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/map/map.png)
+*Рисунок 1 - Карта миграции гиен*
 
 
 ## Оценка алгоритма распределения последовательностей по гаплогруппам
-Также было проанализировано качество работы алгоритма распределения последовательностей на гаплогруппы. В качестве референса использовался алгоритм [HapNet](https://www.researchgate.net/publication/400973467_HapNet_a_new_Python_package_for_automated_population-aware_haplotype_network_analysis_and_visualization). Результаты распределения по гаплогруппам используемой программы были сохранены как [`alg_1.tsv`](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/alg_1.tsv), результаты работы HapNet были сохранены как [reference.tsv](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/reference.tsv). В качестве метрик были использованы *Acc* - доля правильных ответов от общего числа случаев, *Kappa* - согласие между двумя оценщиками с поправкой на случайность, *F1 macro* - среднее гармоническое точности и полноты, усреднённое по классам без учёта их частоты. Результаты оценки сгруппированы в *табл. 1* и *рис. 1-3*:
+Также было проанализировано качество работы алгоритма распределения последовательностей на гаплогруппы. В качестве референса использовался алгоритм [HapNet](https://www.researchgate.net/publication/400973467_HapNet_a_new_Python_package_for_automated_population-aware_haplotype_network_analysis_and_visualization). Результаты распределения по гаплогруппам используемой программы были сохранены как [`alg_1.tsv`](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/alg_1.tsv), результаты работы HapNet были сохранены как [`reference.tsv`](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/reference.tsv). В качестве метрик были использованы *Acc* - доля правильных ответов от общего числа случаев, *Kappa* - согласие между двумя оценщиками с поправкой на случайность, *F1 macro* - среднее гармоническое точности и полноты, усреднённое по классам без учёта их частоты. Результаты оценки сгруппированы в *табл. 1* и *рис. 1-3*:
 
 **Таблица 1 - Метрики оценки качества распределения последовательностей по гаплогруппам**
 |Метрика|значение|
@@ -123,14 +127,14 @@ streamlit run MMNV_web.py
 |Kappa|1.0000|
 |F1 macro|1.0000|
 
-![рис. 1](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/confusion_alg_1.png)
-*Рисунок 1 - Матрица достоверности алгоритма против референса*
+![рис. 2](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/confusion_alg_1.png)
+*Рисунок 2 - Матрица достоверности алгоритма против референса*
 
-![рис. 2](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/error_counts.png)
-*Рисунок 2 - Количество ошибок определения гаплогруппы в сравнении с референсом*
+![рис.3](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/error_counts.png)
+*Рисунок 3 - Количество ошибок определения гаплогруппы в сравнении с референсом*
 
-![рис. 3](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/metrics_comparison.png)
-*Рисунок 3 - Сравнение значений метрик оценки качества*
+![рис. 4](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/metrics_comparison.png)
+*Рисунок 4 - Сравнение значений метрик оценки качества*
 
 > [!WARNING]
 > [Алгоритм оценки различий результатов](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/app.py) был сгенерирован с помощью LLM DeepSeek 
