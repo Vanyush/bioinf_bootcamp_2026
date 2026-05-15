@@ -1,8 +1,4 @@
 # Гиены: тайны прошлого
-_кейс #1_
-
-> [!WARNING]
-> Этот проект находится в разработке.
 
 # MMNV (Modern Mitochondrial Network Visualizer)
 
