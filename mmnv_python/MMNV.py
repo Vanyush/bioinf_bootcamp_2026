@@ -574,7 +574,6 @@ def run_analysis(fasta_path: str, output_csv: Optional[str] = None):
     result_df['sequence_length'] = df['Sequence'].str.len()
     haplo_labels = assign_haplogroups(df['Sequence'].tolist())
     result_df['haplogroup'] = haplo_labels
-    result_df[['haplogroup', 'header']].to_csv('haplogroups.tsv', sep='\t', index=False)
     result_df = result_df.sort_values('inferred_age_bp', ascending=True).reset_index(drop=True)
 
     if output_csv is None:
