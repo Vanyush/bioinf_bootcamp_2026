@@ -136,7 +136,7 @@ streamlit run MMNV_web.py
 ![рис. 4](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/metrics_comparison.png)
 *Рисунок 4 - Сравнение значений метрик оценки качества*
 
-> [!WARNING]
+> [!NOTE]
 > [Алгоритм оценки различий результатов](https://github.com/Vanyush/bioinf_bootcamp_2026/blob/main/completed_case_assignment/comparison_with_reference/app.py) был сгенерирован с помощью LLM DeepSeek 
 
 
